@@ -75,9 +75,7 @@ if(canvas) {
             signature_modal.classList.toggle('hidden');
             signature_modal.classList.toggle('flex');
             participant_id = this.id.split('_')[3];
-            resizeCanvas();
-            let data = document.getElementById(`participant_signature_img_${participant_id}`).src;
-            signaturePad.fromDataURL(data);
+            resizeCanvas();            
         });
     }
 
@@ -107,7 +105,7 @@ if(canvas) {
             let data = signaturePad.toDataURL("image/svg+xml");              
             document.getElementById('participant_id_hidden_input').value = participant_id;
             document.getElementById('signature_hidden_input').value = data;
-            document.getElementById('signature_form').submit();
+            document.getElementById('signature_form').submit();            
         }
     });    
 }

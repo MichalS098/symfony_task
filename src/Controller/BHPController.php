@@ -97,7 +97,15 @@ class BHPController extends AbstractController
         $participant_id = $request->request->get('participant_id');
         $participant_id = intval($participant_id);
         $participant = $entityManager->getRepository(BHPParticipant::class)->find($participant_id);                                
+
+        // save signature as text in db
         $participant->setSignature($request->request->get('signature'));
+        // or decode and save as image
+        // $encoded_image = explode(",", $request->request->get('signature'))[1];
+        // $decoded_image = base64_decode($encoded_image);        
+        // $file_name = 'signature_'.$participant_id.'.svg';
+        
+
         $entityManager->persist($participant);
         $entityManager->flush();
         $bhp = $participant->getBHP();                                            
